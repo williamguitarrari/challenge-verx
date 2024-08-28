@@ -13,7 +13,8 @@ const prisma_service_1 = require("./prisma/prisma.service");
 const create_account_controller_1 = require("./controllers/create-account.controller");
 const env_1 = require("./env");
 const auth_module_1 = require("./auth/auth.module");
-const authenticate_controller_1 = require("./auth/authenticate.controller");
+const authenticate_controller_1 = require("./controllers/authenticate.controller");
+const create_question_controller_1 = require("./controllers/create-question.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -25,7 +26,11 @@ exports.AppModule = AppModule = __decorate([
             }),
             auth_module_1.AuthModule,
         ],
-        controllers: [create_account_controller_1.CreateAccountController, authenticate_controller_1.AuthenticateController],
+        controllers: [
+            create_account_controller_1.CreateAccountController,
+            authenticate_controller_1.AuthenticateController,
+            create_question_controller_1.CreateQuestionController
+        ],
         providers: [prisma_service_1.PrismaService],
     })
 ], AppModule);
