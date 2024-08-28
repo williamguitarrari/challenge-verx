@@ -5,14 +5,14 @@ export declare const envSchema: z.ZodObject<{
     JWT_PUBLIC_KEY: z.ZodString;
     PORT: z.ZodDefault<z.ZodOptional<z.ZodNumber>>;
 }, "strip", z.ZodTypeAny, {
-    DATABASE_URL?: string;
-    JWT_PRIVATE_KEY?: string;
-    JWT_PUBLIC_KEY?: string;
-    PORT?: number;
+    DATABASE_URL: string;
+    JWT_PRIVATE_KEY: string;
+    JWT_PUBLIC_KEY: string;
+    PORT: number;
 }, {
-    DATABASE_URL?: string;
-    JWT_PRIVATE_KEY?: string;
-    JWT_PUBLIC_KEY?: string;
-    PORT?: number;
+    DATABASE_URL: string;
+    JWT_PRIVATE_KEY: string;
+    JWT_PUBLIC_KEY: string;
+    PORT?: number | undefined;
 }>;
 export type Env = z.infer<typeof envSchema>;
