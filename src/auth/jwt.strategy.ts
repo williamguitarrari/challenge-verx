@@ -5,16 +5,16 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Env } from 'src/env';
 import { z } from "zod";
 
-const tokenSchema = z.object({
+const TokenPayloadSchema = z.object({
   sub: z.string().uuid(),
 })
 
-type TokenSchema = z.infer<typeof tokenSchema>
+export type UserPayload = z.infer<typeof TokenPayloadSchema>
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(config: ConfigService<Env, true>) {
-    const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true })
+    const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true }) //chave publica, somente para validar se o usuário está logado
 
 
     super({
@@ -25,8 +25,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   }
 
-  async validate(payload: TokenSchema) {
-    return tokenSchema.parse(payload)
+  async validate(payload: UserPayload) {
+    return TokenPayloadSchema.parse(payload)
   }
 
 }
